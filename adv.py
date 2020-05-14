@@ -60,3 +60,8 @@ while True:
         break
     else:
         print("I did not understand that command.")
+
+#undirected cyclic graph
+#backtracking counts as move
+#explore entire graph
+#dfs then optimize
