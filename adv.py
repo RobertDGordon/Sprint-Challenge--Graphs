@@ -23,7 +23,7 @@ world.load_graph(room_graph)
 # Print an ASCII map
 # world.print_rooms()
 
-player = Player(world.starting_room)
+# player = Player(world.starting_room)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
@@ -37,6 +37,7 @@ def run_maze():
     visited = set()
     graph = Graph()
     travel_path = []
+    player = Player(world.starting_room)
     dfs_rooms = graph.dfs(player.current_room)
     rooms = [room for room in dfs_rooms]
     while(len(visited) < len(room_graph) -1):
@@ -66,6 +67,22 @@ def run_maze():
 
 traversal_path = []
 
+def test_traversal(test_traversal_path):
+    visited_rooms = set()
+    testplayer = Player(world.starting_room)
+    testplayer.current_room = world.starting_room
+    visited_rooms.add(testplayer.current_room)
+
+    for move in test_traversal_path:
+        testplayer.travel(move)
+        visited_rooms.add(testplayer.current_room)
+
+    if len(visited_rooms) == len(room_graph):
+        print(f"TESTS PASSED: {len(test_traversal_path)} moves, {len(visited_rooms)} rooms visited")
+    else:
+        print("TESTS FAILED: INCOMPLETE TRAVERSAL")
+        print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
+
 def get_low():
     global traversal_path
     traversal_path = run_maze()
@@ -76,21 +93,24 @@ def get_low():
     itera = 0
     prev_traversal = len(traversal_path)
     travel_count = 0
-    while len(traversal_path) > 953:
+    while len(traversal_path) > 946:
         travel_count += 1
-        if travel_count in range(0, 1000000000000000, 1000):
+        if travel_count in range(0, 1000000000000000, 5000):
             print('running for', travel_count)
         traversal_path = run_maze()
         if len(traversal_path) < prev_traversal:
-            print('Current lowest:', len(traversal_path))
+            print('Current lowest:', len(traversal_path), "at:", travel_count)
             prev_traversal = len(traversal_path)
+            print('##########')
+            # traversal_test(traversal_path, player, world, room_graph)
+            test_traversal(traversal_path)
+            print('##########')
         # print(len(traversal_path))
     print('Total runs:', travel_count)
 
 get_low()
 
-
-# TRAVERSAL TEST - DO NOT MODIFY
+# # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
 player.current_room = world.starting_room
 visited_rooms.add(player.current_room)
