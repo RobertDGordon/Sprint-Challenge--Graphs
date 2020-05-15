@@ -1,3 +1,14 @@
+import random
+
+count = 0
+
+def rando_exit(length):
+    rand = random.randrange(0, length)
+    # global count
+    # count += 1
+    # print(count, '- length:', length, rand)
+    return rand
+
 class Queue():
     def __init__(self):
         self.queue = []
@@ -29,6 +40,9 @@ class Graph:
         self.vertices = {}
     
     def dfs(self, starting_vertex):
+        # global count
+        # count += 1
+        # print('dfs runs', count)
         visited_rooms = set()
         s = Stack()
         s.push([starting_vertex])
@@ -45,7 +59,9 @@ class Graph:
                 visited_rooms.add(room)
                 #if exits exist, loop and add
                 while len(exits) > 0:
-                    direction = exits[0]
+                    rando = rando_exit(len(exits))
+                    # print(rando)
+                    direction = exits[rando]
                     neighbors = list(current_room)
                     neighbors.append(room.get_room_in_direction(direction))
                     s.push(neighbors)
