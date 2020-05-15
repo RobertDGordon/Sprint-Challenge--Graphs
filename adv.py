@@ -25,22 +25,11 @@ world.load_graph(room_graph)
 
 player = Player(world.starting_room)
 
-# graph2 = Graph()
-# print('#######################################')
-# bfs_rooms = graph2.bfs_rooms(player.current_room, None)
-# dfs_rooms = []
-# print(dfs_rooms)
-
-
-# print(bfs_rooms)
-# rooms = []
-
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 # traversal_path = []
 
 # print(rooms)
-
 
 count = 0
 
@@ -87,7 +76,7 @@ def get_low():
     itera = 0
     prev_traversal = len(traversal_path)
     travel_count = 0
-    while len(traversal_path) > 955:
+    while len(traversal_path) > 953:
         travel_count += 1
         if travel_count in range(0, 1000000000000000, 1000):
             print('running for', travel_count)
@@ -96,7 +85,7 @@ def get_low():
             print('Current lowest:', len(traversal_path))
             prev_traversal = len(traversal_path)
         # print(len(traversal_path))
-            
+    print('Total runs:', travel_count)
 
 get_low()
 
