@@ -87,7 +87,7 @@ def get_low():
     itera = 0
     prev_traversal = len(traversal_path)
     travel_count = 0
-    while len(traversal_path) > 959:
+    while len(traversal_path) > 955:
         travel_count += 1
         if travel_count in range(0, 1000000000000000, 1000):
             print('running for', travel_count)
