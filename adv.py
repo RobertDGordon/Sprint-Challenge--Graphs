@@ -23,7 +23,7 @@ world.load_graph(room_graph)
 # Print an ASCII map
 # world.print_rooms()
 
-# player = Player(world.starting_room)
+player = Player(world.starting_room)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
@@ -93,7 +93,7 @@ def get_low():
     itera = 0
     prev_traversal = len(traversal_path)
     travel_count = 0
-    while len(traversal_path) > 946:
+    while len(traversal_path) > 939:
         travel_count += 1
         if travel_count in range(0, 1000000000000000, 5000):
             print('running for', travel_count)
