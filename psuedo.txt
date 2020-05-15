@@ -1,0 +1,5 @@
+First check number of exits
+If number of exits is greater than 3:
+    Explore N
+else if number of exits greater than 1:
+    Explore direction 
